@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/andrewpak/Desktop/fraud-detection-mlops/mlruns/0/762366380315436483b13b43a0ad737e/artifacts
+end_time: 1757588921237
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 762366380315436483b13b43a0ad737e
+run_name: traveling-worm-203
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757588918541
+status: 3
+tags: []
+user_id: andrewpak

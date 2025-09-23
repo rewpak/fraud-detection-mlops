@@ -1,0 +1,10 @@
+artifact_location: file:///Users/andrewpak/Desktop/fraud-detection-mlops/mlruns/0/models/m-d02e035862be4947913962982ba47fac/artifacts
+creation_timestamp: 1757588919330
+experiment_id: '0'
+last_updated_timestamp: 1757588921234
+model_id: m-d02e035862be4947913962982ba47fac
+model_type: null
+name: model
+source_run_id: 762366380315436483b13b43a0ad737e
+status: 2
+status_message: null

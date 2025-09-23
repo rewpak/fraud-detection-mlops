@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/andrewpak/Desktop/fraud-detection-mlops/mlruns/0/1aa1e618763949c796d2c311df428dfc/artifacts
+end_time: 1757859366324
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1aa1e618763949c796d2c311df428dfc
+run_name: xgb_pipeline_with_registry
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757859363629
+status: 3
+tags: []
+user_id: andrewpak

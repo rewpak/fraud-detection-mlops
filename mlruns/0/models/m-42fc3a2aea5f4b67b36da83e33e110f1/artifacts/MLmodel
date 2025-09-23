@@ -1,0 +1,22 @@
+artifact_path: file:///Users/andrewpak/Desktop/fraud-detection-mlops/mlruns/0/models/m-42fc3a2aea5f4b67b36da83e33e110f1/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.3.2
+model_id: m-42fc3a2aea5f4b67b36da83e33e110f1
+model_size_bytes: 222285
+model_uuid: m-42fc3a2aea5f4b67b36da83e33e110f1
+prompts: null
+run_id: 1aa1e618763949c796d2c311df428dfc
+utc_time_created: '2025-09-14 14:16:04.410750'
