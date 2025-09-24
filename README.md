@@ -211,15 +211,20 @@ https://fraud-detection-mlops-o0vp.onrender.com/docs
 
 Steps:
 	1.	Create a free account at https://render.com
+
 	2.	Go to Dashboard → New Web Service
+
 	3.	Connect your GitHub repository
+
 	4.	Fill in the settings:
+
 	    •	Build Command: (leave empty if using Docker)
 	    •	Start Command:
 
 ```bash
 uvicorn src.main:app --host 0.0.0.0 --port 8000
 ```
+
         •	Environment: Docker
 	    •	Port: 8000
 
