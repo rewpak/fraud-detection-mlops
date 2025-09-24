@@ -36,6 +36,7 @@ The application is deployed as a web service where users can upload transaction 
 
 ## Project Structure
 
+```bash
 ├── data/
 │   ├── raw/                  # Raw input dataset (e.g., creditcard.csv)
 │   ├── processed/            # Processed datasets (train/test splits)
@@ -64,7 +65,7 @@ The application is deployed as a web service where users can upload transaction 
 ├── Dockerfile                # Docker setup for the API
 ├── .gitignore                # Files to ignore in git
 └── README.md                 # Project documentation
-
+```
 ## Setup & Installation
 
 Follow these steps to set up and run the project locally:
@@ -92,6 +93,7 @@ uvicorn src.main:app --reload
 ```
 
 After running this command, navigate to:
+
 	•	Local API root: http://127.0.0.1:8000
 	•	Swagger UI docs: http://127.0.0.1:8000/docs
 
@@ -117,7 +119,7 @@ curl -X POST "https://fraud-detection-mlops-o0vp.onrender.com/predict" \
   -F "file=@sample_transaction.csv"
 ```
 
-### 3. Expected CSV format
+### 3. Expected Input Format
 Your file should contain the same columns as the training data used for the model. Example format:
 
 ```bash
@@ -125,6 +127,111 @@ Time,V1,V2,V3,...,V28,Amount
 -1.359807,-0.072781,2.536347,...,0.133558,-0.021053,149.62
 1.191857,0.266151,0.166480,...,-0.008983,0.014724,2.69
 ```
+
+### 4. File Format
+
+Ensure your CSV file matches the expected structure:
+	•	Contains features used during training (e.g., Time, V1, V2, …, V28, Amount)
+	•	Does not include the Class label
+	•	Use the provided sample_transaction.csv as a template
+
+## Model Tracking with MLflow
+
+MLflow is used in this project to track experiments, log metrics, and version models during the training process. This helps ensure reproducibility and allows you to monitor the performance of different model configurations over time.
+
+### What is Tracked
+
+- Model parameters (e.g., number of estimators, learning rate)
+- Evaluation metrics (e.g., accuracy, precision, recall, F1 score)
+- Model artifacts (serialized model files)
+- Training metadata and timestamps
+
+### How to Launch MLflow Locally
+
+To view and interact with experiment runs locally, use the following command:
+
+```bash
+mlflow ui
+``` 
+
+Then open your browser and navigate to:
+```bash
+http://127.0.0.1:5000
+```
+This will launch the MLflow tracking UI where you can explore past runs, compare metrics, and download model artifacts.
+
+## Dockerization
+
+Docker is used to containerize the application, ensuring consistency across different environments and simplifying the deployment process.
+
+🧱 Building the Docker Image
+To build the Docker image locally, run the following command from the root of the project:
+
+```bash
+docker build -t fraud-api .
+```
+This command creates a Docker image named fraud-api using the instructions in the Dockerfile.
+
+🚀 Running the Container
+Once the image is built, run the container using:
+```bash
+docker run -d -p 8000:8000 fraud-api
+```
+-d runs the container in detached mode
+-p 8000:8000 maps your local port 8000 to the container’s port 8000
+
+After that, the API will be accessible at:
+
+```bash
+http://localhost:8000
+```
+And the Swagger UI will be available at:
+```bash
+http://localhost:8000/docs
+```
+
+## 🚀 Deployment
+
+This project is deployed on Render, a cloud platform that allows running web services with Docker support.
+
+🔗 Live Demo
+
+You can access the live API here:
+fraud-detection-mlops.onrender.com
+
+Use the /docs route to interact with the Swagger UI:
+https://fraud-detection-mlops-o0vp.onrender.com/docs
+
+🌍 How to Deploy on Render
+
+✅ Before deploying, ensure your GitHub repo includes:
+	•	Dockerfile
+	•	requirements.txt
+	•	src/main.py (FastAPI entry point)
+
+Steps:
+	1.	Create a free account at https://render.com
+	2.	Go to Dashboard → New Web Service
+	3.	Connect your GitHub repository
+	4.	Fill in the settings:
+	    •	Build Command: (leave empty if using Docker)
+	    •	Start Command:
+
+```bash
+uvicorn src.main:app --host 0.0.0.0 --port 8000
+```
+        •	Environment: Docker
+	    •	Port: 8000
+
+	5.	Click Create Web Service
+	6.	Wait for the build to complete and copy your public URL
+
+🐳 Why Render?
+
+Render makes it easy to deploy containerized applications without managing infrastructure. It supports automatic deploys from GitHub and provides HTTPS and CI/CD out of the box.
+
+
+
 
 
 
